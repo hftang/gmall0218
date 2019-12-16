@@ -1,12 +1,11 @@
 package com.atguigu.gmall.manage.controller;
 
 import com.alibaba.dubbo.config.annotation.Reference;
-import com.atguigu.gmall0218.bean.BaseAttrInfo;
-import com.atguigu.gmall0218.bean.BaseCatalog1;
-import com.atguigu.gmall0218.bean.BaseCatalog2;
-import com.atguigu.gmall0218.bean.BaseCatalog3;
+import com.atguigu.gmall0218.bean.*;
 import com.atguigu.gmall0218.service.ManageService;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -17,13 +16,14 @@ import java.util.List;
  * @Date: 2019/12/12 18:23
  * @Description:
  */
+@CrossOrigin
 @Controller
 public class ManageController {
 
     @Reference
     private ManageService manageService;
 
-    @RequestMapping("getCatelog1")
+    @RequestMapping("getCatalog1")
     @ResponseBody
     public List<BaseCatalog1> getCatelog1() {
 
@@ -33,7 +33,7 @@ public class ManageController {
     }
 
 
-    @RequestMapping("getCatelog2")
+    @RequestMapping("getCatalog2")
     @ResponseBody
     public List<BaseCatalog2> getCatelog2(String catalog1Id) {
 
@@ -43,7 +43,7 @@ public class ManageController {
     }
 
 
-    @RequestMapping("getCatelog3")
+    @RequestMapping("getCatalog3")
     @ResponseBody
     public List<BaseCatalog3> getCatelog3(String catalog2Id) {
 
@@ -58,6 +58,35 @@ public class ManageController {
         List<BaseAttrInfo> attrList = this.manageService.getAttrList(catalog3Id);
         return attrList;
     }
+
+    //保存平台属性
+    @RequestMapping("saveAttrInfo")
+    @ResponseBody
+    public void saveAttrInfo(@RequestBody BaseAttrInfo baseAttrInfo) {
+
+        this.manageService.saveAttrInfo(baseAttrInfo);
+
+
+    }
+
+    //修改属性的回显
+
+    @RequestMapping("getAttrValueList")
+    @ResponseBody
+    public List<BaseAttrValue> getAttrValueList(String attrId) {
+        BaseAttrInfo attrValueList = this.manageService.getAttrValueList(attrId);
+
+        return attrValueList.getAttrValueList();
+    }
+
+    //获取商品销售属性
+    @RequestMapping("baseSaleAttrList")
+    @ResponseBody
+    public List<BaseSaleAttr> getBaseSaleAttrList() {
+        return this.manageService.getBaseSaleAttrList();
+    }
+
+
 
 
 }

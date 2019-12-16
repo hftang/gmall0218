@@ -1,10 +1,12 @@
 package com.atguigu.gmall0218.bean;
 
+import javafx.stage.Stage;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Id;
+import javax.annotation.Generated;
+import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 
 /**
  * @Auther: hftang
@@ -12,7 +14,8 @@ import java.io.Serializable;
  * @Description:
  */
 @Data
-public class BaseAttrInfo  implements Serializable {
+public class BaseAttrInfo implements Serializable {
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Id
     @Column
     private String id;
@@ -20,5 +23,9 @@ public class BaseAttrInfo  implements Serializable {
     private String attrName;
     @Column
     private String catalog3Id;
+
+    //属性值
+    @Transient
+    private List<BaseAttrValue> attrValueList;
 
 }

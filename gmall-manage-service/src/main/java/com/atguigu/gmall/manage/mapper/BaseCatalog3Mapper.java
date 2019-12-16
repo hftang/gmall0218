@@ -1,6 +1,5 @@
 package com.atguigu.gmall.manage.mapper;
 
-import com.atguigu.gmall0218.bean.BaseCatalog1;
 import com.atguigu.gmall0218.bean.BaseCatalog3;
 import tk.mybatis.mapper.common.Mapper;
 

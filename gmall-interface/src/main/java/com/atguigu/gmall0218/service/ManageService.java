@@ -1,9 +1,6 @@
 package com.atguigu.gmall0218.service;
 
-import com.atguigu.gmall0218.bean.BaseAttrInfo;
-import com.atguigu.gmall0218.bean.BaseCatalog1;
-import com.atguigu.gmall0218.bean.BaseCatalog2;
-import com.atguigu.gmall0218.bean.BaseCatalog3;
+import com.atguigu.gmall0218.bean.*;
 
 import java.util.List;
 
@@ -22,4 +19,21 @@ public interface ManageService {
 
     public List<BaseAttrInfo> getAttrList(String catalog3Id);
 
+    void saveAttrInfo(BaseAttrInfo baseAttrInfo);
+
+    BaseAttrInfo getAttrValueList(String attrId);
+
+    List<SpuInfo> getSpuInfoList(SpuInfo spuInfo);
+
+    //获取商品售卖的基本属性
+    List<BaseSaleAttr> getBaseSaleAttrList();
+
+    //保存spuinfo
+    void saveSpuInfo(SpuInfo spuInfo);
+
+    List getSpuImageList(SpuImage spuImage);
+
+    List<SpuSaleAttr> getSpuSaleAttrList(String spuId);
+
+    void saveSkuInfo(SkuInfo skuInfo);
 }
